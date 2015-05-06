@@ -18,18 +18,32 @@ class NewVisitorTest(unittest.TestCase):
 
         # He notices the page title and header mention OCTODEPS
         self.assertIn('OCTODEPS', self.browser.title)
-        self.fail('Finish the test!')
+        header_text = self.browser.find_element_by_tag_name('h1').text
+        self.assertIn('OCTODEPS', header_text)
 
         # The page is divided into 3 sections: Optical simulations,
         # electrical simulations and results.
+        opt = self.browser.find_element_by_id('id_opt_sims_div')
+        elc = self.browser.find_element_by_id('id_elc_sims_div')
+        res = self.browser.find_element_by_id('id_results_div')
 
-        # 3 empty lists of optical simulations are displayed:
+        # In first div, 3 empty lists of optical simulations are displayed:
         # to setup, to run and to analyse.
+        opt_to_setup   = opt.find_element_by_id('id_opt_to_setup')
+        opt_to_run     = opt.find_element_by_id('id_opt_to_run')
+        opt_to_analyse = opt.find_element_by_id('id_opt_to_analyse')
 
-        # 3 empty lists of electrical simulations are displayed:
+        # In second div, 3 empty lists of electrical simulations are displayed:
         # to setup, to run and to analyse.
+        elc_to_setup   = elc.find_element_by_id('id_elc_to_setup')
+        elc_to_run     = elc.find_element_by_id('id_elc_to_run')
+        elc_to_analyse = elc.find_element_by_id('id_elc_to_analyse')
 
         # There are 4 buttons. Go, Stop, Clear and Plot.
+        self.browser.find_element_by_id('id_go_button')
+        self.browser.find_element_by_id('id_stop_button')
+        self.browser.find_element_by_id('id_clear_button')
+        self.browser.find_element_by_id('id_plot_button')
 
         # Tom wants to initialise some simulations without setting them up.
         # He sets the following parameters:
@@ -38,6 +52,7 @@ class NewVisitorTest(unittest.TestCase):
         # a = [160,170,180,190,200]
         # th = [30]
         # l = [1000]
+        self.fail('Finish the test!')
 
         # He initially sets opt_create_flag = True.
 

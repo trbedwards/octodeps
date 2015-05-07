@@ -45,7 +45,7 @@ class NewVisitorTest(unittest.TestCase):
         self.browser.find_element_by_id('id_clear_button')
         self.browser.find_element_by_id('id_plot_button')
 
-        # Tom wants to initialise some simulations without setting them up.
+        # Tom wants to initialise some simulations (jobs) without setting them up.
         # He sets the following parameters:
         # isolated coated nanowires
         # TiO2 (n=3 dielectric) core, CdSe coating

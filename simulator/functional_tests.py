@@ -27,17 +27,29 @@ class NewVisitorTest(unittest.TestCase):
         elc = self.browser.find_element_by_id('id_elc_sims_div')
         res = self.browser.find_element_by_id('id_results_div')
 
+        self.assertIn('Optical simulations',opt.find_element_by_tag_name('h2').text)
+        self.assertIn('Electrical simulations',elc.find_element_by_tag_name('h2').text)
+        self.assertIn('Results',res.find_element_by_tag_name('h2').text)
+
         # In first div, 3 empty lists of optical simulations are displayed:
         # to setup, to run and to analyse.
         opt_to_setup   = opt.find_element_by_id('id_opt_to_setup')
         opt_to_run     = opt.find_element_by_id('id_opt_to_run')
         opt_to_analyse = opt.find_element_by_id('id_opt_to_analyse')
 
+        self.assertIn('To setup',opt_to_setup.find_element_by_tag_name('h3').text)
+        self.assertIn('To run',opt_to_run.find_element_by_tag_name('h3').text)
+        self.assertIn('To analyse',opt_to_analyse.find_element_by_tag_name('h3').text)
+
         # In second div, 3 empty lists of electrical simulations are displayed:
         # to setup, to run and to analyse.
         elc_to_setup   = elc.find_element_by_id('id_elc_to_setup')
         elc_to_run     = elc.find_element_by_id('id_elc_to_run')
         elc_to_analyse = elc.find_element_by_id('id_elc_to_analyse')
+
+        self.assertIn('To setup',elc_to_setup.find_element_by_tag_name('h3').text)
+        self.assertIn('To run',elc_to_run.find_element_by_tag_name('h3').text)
+        self.assertIn('To analyse',elc_to_analyse.find_element_by_tag_name('h3').text)
 
         # There are 4 buttons. Go, Stop, Clear and Plot.
         self.browser.find_element_by_id('id_go_button')
